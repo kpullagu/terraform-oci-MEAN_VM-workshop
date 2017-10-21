@@ -20,12 +20,13 @@ module "mean-stack-config" {
   source = "./modules/mean-stack-config"
   tenancy_ocid = "${var.tenancy_ocid}"
   compartment_ocid = "${var.compartment_ocid}"
-  mean-stack-public-ip = "${module.mean-stack.public_ip}"
+  mean-stack-public-ip = "${module.mean-stack.items_comma}"
   instance_count = "${var.instance_count}"
   ssh_private_key = "${var.ssh_authorized_private_key}"
 }
 
 
+
 output "MEAN Stack URL" {
-  value = "http://${module.mean-stack.public_ip}:8080"
+  value = "http://${module.mean-stack.items_comma}:8080"
 }
